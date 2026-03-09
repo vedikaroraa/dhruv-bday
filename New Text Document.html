@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 18th, Dhruv 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --gold: #f5c842;
+    --gold-light: #fde980;
+    --cream: #fdf6e3;
+    --warm: #ff8c5a;
+    --blush: #ff6b8a;
+    --text: #e8dfc8;
+    --muted: #8a7e6a;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: var(–bg);
+font-family: ‘DM Sans’, sans-serif;
+color: var(–text);
+overflow-x: hidden;
+min-height: 100vh;
+}
+
+/* Starfield background */
+.stars {
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+pointer-events: none;
+z-index: 0;
+}
+.star {
+position: absolute;
+border-radius: 50%;
+background: white;
+animation: twinkle var(–d) ease-in-out infinite;
+}
+@keyframes twinkle {
+0%, 100% { opacity: 0.1; transform: scale(1); }
+50% { opacity: 0.9; transform: scale(1.3); }
+}
+
+/* Floating confetti particles */
+.confetti-container {
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+pointer-events: none;
+z-index: 1;
+overflow: hidden;
+}
+.confetti-piece {
+position: absolute;
+width: 8px;
+height: 8px;
+top: -20px;
+animation: fall linear infinite;
+opacity: 0.7;
+}
+@keyframes fall {
+0% { transform: translateY(-20px) rotate(0deg); opacity: 0.8; }
+100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Gradient blobs */
+.blob {
+position: fixed;
+border-radius: 50%;
+filter: blur(80px);
+opacity: 0.12;
+pointer-events: none;
+z-index: 0;
+animation: drift 12s ease-in-out infinite alternate;
+}
+.blob-1 { width: 500px; height: 500px; background: var(–gold); top: -100px; left: -100px; }
+.blob-2 { width: 400px; height: 400px; background: var(–blush); bottom: -100px; right: -100px; animation-delay: -6s; }
+.blob-3 { width: 300px; height: 300px; background: var(–warm); top: 50%; left: 50%; animation-delay: -3s; }
+@keyframes drift {
+0% { transform: translate(0, 0) scale(1); }
+100% { transform: translate(40px, 30px) scale(1.1); }
+}
+
+/* Layout */
+.container {
+position: relative;
+z-index: 2;
+max-width: 760px;
+margin: 0 auto;
+padding: 60px 24px 100px;
+}
+
+/* Hero header */
+.hero {
+text-align: center;
+margin-bottom: 70px;
+animation: fadeUp 1.2s ease both;
+}
+.eyebrow {
+font-family: ‘Caveat’, cursive;
+font-size: 22px;
+color: var(–warm);
+letter-spacing: 2px;
+margin-bottom: 12px;
+animation: fadeUp 1s ease 0.2s both;
+}
+.big-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(52px, 12vw, 96px);
+font-weight: 900;
+line-height: 0.95;
+background: linear-gradient(135deg, var(–gold-light) 0%, var(–gold) 40%, var(–warm) 80%, var(–blush) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 16px;
+animation: fadeUp 1s ease 0.4s both;
+}
+.subtitle {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+font-size: clamp(18px, 4vw, 26px);
+color: var(–muted);
+animation: fadeUp 1s ease 0.6s both;
+}
+.age-badge {
+display: inline-block;
+margin-top: 24px;
+padding: 10px 28px;
+border: 1.5px solid var(–gold);
+border-radius: 100px;
+font-family: ‘Caveat’, cursive;
+font-size: 20px;
+color: var(–gold-light);
+letter-spacing: 3px;
+animation: fadeUp 1s ease 0.8s both, glow 3s ease-in-out infinite;
+}
+@keyframes glow {
+0%, 100% { box-shadow: 0 0 10px rgba(245, 200, 66, 0.2); }
+50% { box-shadow: 0 0 30px rgba(245, 200, 66, 0.6); }
+}
+
+/* Divider */
+.divider {
+display: flex;
+align-items: center;
+gap: 16px;
+margin: 48px 0;
+animation: fadeUp 1s ease 0.9s both;
+}
+.divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(–gold), transparent); }
+.divider-star { color: var(–gold); font-size: 18px; }
+
+/* Sections */
+.section {
+margin-bottom: 52px;
+animation: fadeUp 1s ease both;
+}
+.section-label {
+font-family: ‘Caveat’, cursive;
+font-size: 17px;
+color: var(–warm);
+letter-spacing: 2px;
+margin-bottom: 14px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.section-label::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: linear-gradient(to right, var(–warm), transparent);
+opacity: 0.4;
+}
+
+.message-block {
+font-size: clamp(16px, 2.5vw, 18px);
+line-height: 1.85;
+color: var(–text);
+font-weight: 300;
+}
+.message-block p { margin-bottom: 20px; }
+.message-block p:last-child { margin-bottom: 0; }
+
+em, .italic {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+color: var(–gold-light);
+font-weight: 400;
+}
+
+strong, .bold {
+font-weight: 500;
+color: var(–cream);
+}
+
+/* Pull quotes */
+.pull-quote {
+border-left: 3px solid var(–gold);
+padding: 20px 28px;
+margin: 32px 0;
+background: rgba(245, 200, 66, 0.04);
+border-radius: 0 12px 12px 0;
+}
+.pull-quote p {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+font-size: clamp(18px, 3vw, 22px);
+line-height: 1.6;
+color: var(–gold-light);
+margin: 0;
+}
+
+/* Origin story card */
+.origin-card {
+background: rgba(255, 140, 90, 0.06);
+border: 1px solid rgba(255, 140, 90, 0.2);
+border-radius: 20px;
+padding: 32px 36px;
+margin: 32px 0;
+}
+.origin-card .card-title {
+font-family: ‘Caveat’, cursive;
+font-size: 20px;
+color: var(–warm);
+margin-bottom: 16px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+/* Closing */
+.closing {
+text-align: center;
+margin-top: 72px;
+padding-top: 48px;
+border-top: 1px solid rgba(245, 200, 66, 0.15);
+animation: fadeUp 1s ease both;
+}
+.closing-main {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(28px, 6vw, 46px);
+font-weight: 700;
+color: var(–gold-light);
+line-height: 1.3;
+margin-bottom: 20px;
+}
+.closing-sub {
+font-family: ‘Caveat’, cursive;
+font-size: 22px;
+color: var(–warm);
+margin-bottom: 32px;
+}
+.closing-from {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+font-size: 18px;
+color: var(–muted);
+}
+
+/* Animated hearts */
+.hearts {
+display: flex;
+justify-content: center;
+gap: 16px;
+margin-top: 36px;
+font-size: 28px;
+}
+.hearts span {
+display: inline-block;
+animation: heartbeat 1.4s ease-in-out infinite;
+}
+.hearts span:nth-child(2) { animation-delay: 0.2s; }
+.hearts span:nth-child(3) { animation-delay: 0.4s; }
+.hearts span:nth-child(4) { animation-delay: 0.6s; }
+.hearts span:nth-child(5) { animation-delay: 0.8s; }
+@keyframes heartbeat {
+0%, 100% { transform: scale(1); }
+14% { transform: scale(1.3); }
+28% { transform: scale(1); }
+42% { transform: scale(1.2); }
+70% { transform: scale(1); }
+}
+
+/* Scroll animations */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.s1 { animation-delay: 1.0s; }
+.s2 { animation-delay: 1.2s; }
+.s3 { animation-delay: 1.4s; }
+.s4 { animation-delay: 1.6s; }
+.s5 { animation-delay: 1.8s; }
+.s6 { animation-delay: 2.0s; }
+.s7 { animation-delay: 2.2s; }
+</style>
+
+</head>
+<body>
+
+<!-- Stars -->
+
+<div class="stars" id="stars"></div>
+
+<!-- Blobs -->
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- Confetti -->
+
+<div class="confetti-container" id="confetti"></div>
+
+<div class="container">
+
+  <!-- Hero -->
+
+  <div class="hero">
+    <div class="eyebrow">✦ for my brother, my soul friend ✦</div>
+    <h1 class="big-title">Happy<br>Birthday<br>Dhruv.</h1>
+    <p class="subtitle">the one I'd throw a Milton bottle at all over again.</p>
+    <div class="age-badge">✦ 18 ✦</div>
+  </div>
+
+  <div class="divider"><div class="divider-line"></div><span class="divider-star">✦</span><div class="divider-line"></div></div>
+
+  <!-- Where it all began -->
+
+  <div class="section s1">
+    <div class="section-label">✦ origin story</div>
+    <div class="origin-card">
+      <div class="card-title">🎮 OG Minecraft Tales → Scope SMP → forever</div>
+      <div class="message-block">
+        <p>Man, I genuinely don't know where to start. Because where do you even begin with someone like you? We started in the most absurd, chaotic, <em>perfectly us</em> way possible  OG Minecraft Tales, you with your <strong>PogChamp obsession</strong>, going by <em>lilcrasher</em>, posting those videos that were honestly so unhinged and so hilarious that they kind of just became the catalyst for everything.</p>
+        <p>And then came Scope SMP. Your great arrival. The legendary <strong>Milton bottle</strong> that started it all. And honestly? If I could rewind four years and do it all again  I would throw that bottle at you <em>every single time.</em> Without hesitation. Every. Single. Time.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The unexpected kind -->
+
+  <div class="section s2">
+    <div class="section-label">✦ the unexpected ones</div>
+    <div class="message-block">
+      <p>Some people walk into your life so quietly, so unexpectedly, that you don't even register how deeply they've woven themselves into it  until one day you look around and you just <em>can't imagine it without them.</em> That's you, Dhruv. That was always you.</p>
+      <p>I never imagined  not for a second  that we'd end up here. That we'd go from dumb Minecraft chaos to this level of friendship that I genuinely don't even have the right word for, because "friend" doesn't cover it. <strong>We're family.</strong> Straight up. The kind of family you don't get assigned by blood  the kind you find, somehow, in the middle of the internet on a blocky game, and choose to keep forever.</p>
+    </div>
+  </div>
+
+  <!-- Pull quote 1 -->
+
+  <div class="pull-quote s3">
+    <p>"You know more about me than my family does right now  and I think that's one of the most beautiful things I've ever been given."</p>
+  </div>
+
+  <!-- Soul friend -->
+
+  <div class="section s3">
+    <div class="section-label">✦ what you mean to me</div>
+    <div class="message-block">
+      <p>I genuinely never had a person I could call my <em>soul friend</em>. Someone who would defend me to the moon and back without blinking. Someone who would love me that fiercely, stand beside me through every mess, every low, every moment where I didn't even have the words to explain what was going on  and just <strong>be there anyway.</strong></p>
+      <p>You are that person. You have always been that person for me. Through each and every problem, each and every storm, each moment that felt too heavy to carry alone  you were just <em>there.</em> Not because you had to be. Because you chose to be.</p>
+      <p>And I don't take that lightly. I never will.</p>
+    </div>
+  </div>
+
+  <!-- Pull quote 2 -->
+
+  <div class="pull-quote s4">
+    <p>"You are the brother I never had. And I will always, always cherish you for that."</p>
+  </div>
+
+  <!-- Looking ahead -->
+
+  <div class="section s4">
+    <div class="section-label">✦ the life I want us to have</div>
+    <div class="message-block">
+      <p>If there is one wish I could hold onto with everything I have, it's this: I want to be friends with you for the rest of my life. No asterisks, no conditions.</p>
+      <p>I want my kids to grow up knowing you as their <em>Uncle Dhruv.</em> I want my parents to always remember you as their daughter's most treasured friend  the one who was always there, always chosen, always family. I want us to be two old women one day, still laughing about the Milton bottle, still being completely feral together, still choosing each other.</p>
+      <p>From <strong>eighth grade</strong> to now. From Scope SMP to forever. That's the timeline I'm signing up for. And I mean every word of that.</p>
+    </div>
+  </div>
+
+  <!-- Gratitude -->
+
+  <div class="section s5">
+    <div class="section-label">✦ thank you</div>
+    <div class="message-block">
+      <p>I am so grateful for you, Dhruv. In a way I genuinely cannot put into words  and trust me, I've tried. I'm trying right now. And still falling short.</p>
+      <p>Thank you to Bela Aunty for bringing you into this world. Thank you to whatever chaotic twist of fate put us in the same corner of the internet at the same time. Thank you for every conversation, every silly moment, every time you showed up when it mattered.</p>
+      <p>Thank you for being <em>my</em> person. My brother. My soul friend.</p>
+      <p><strong>I love you so much, man. More than I'll ever be able to say properly.</strong></p>
+    </div>
+  </div>
+
+  <!-- Closing -->
+
+  <div class="closing s6">
+    <div class="closing-main">May God bless you with everything<br>you deserve and more. 🎂</div>
+    <div class="closing-sub">Have the most incredible 18th, brother.</div>
+    <div class="closing-from"> with all my love, Vedika 🧡<br>your person, your Milton-bottle-thrower, your family.<br><em>See you today lol</em></div>
+    <div class="hearts">
+      <span>🧡</span>
+      <span>✨</span>
+      <span>🎂</span>
+      <span>✨</span>
+      <span>🧡</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Generate stars
+  const starsContainer = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    star.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      top: ${Math.random() * 100}%;
+      left: ${Math.random() * 100}%;
+      --d: ${Math.random() * 4 + 2}s;
+      animation-delay: ${Math.random() * 5}s;
+    `;
+    starsContainer.appendChild(star);
+  }
+
+  // Generate confetti
+  const confettiContainer = document.getElementById('confetti');
+  const colors = ['#f5c842', '#ff8c5a', '#ff6b8a', '#fde980', '#fff', '#a8d8ea'];
+  const shapes = ['circle', 'rect', 'triangle'];
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const size = Math.random() * 8 + 4;
+    const borderRadius = Math.random() > 0.5 ? '50%' : Math.random() > 0.5 ? '2px' : '0';
+    piece.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      background: ${color};
+      left: ${Math.random() * 100}%;
+      border-radius: ${borderRadius};
+      animation-duration: ${Math.random() * 8 + 6}s;
+      animation-delay: ${Math.random() * 10}s;
+    `;
+    confettiContainer.appendChild(piece);
+  }
+
+  // Intersection observer for scroll animations
+  const sections = document.querySelectorAll('.section, .pull-quote, .closing');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach(s => {
+    s.style.opacity = '0';
+    s.style.transform = 'translateY(30px)';
+    s.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+    obs.observe(s);
+  });
+</script>
+
+</body>
+</html>
